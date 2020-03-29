@@ -1,7 +1,7 @@
 import { curry } from '../curry';
 
 describe('curry', () => {
-  it('module', () => {
+  it('defined', () => {
     expect(curry).toBeDefined();
   });
 
