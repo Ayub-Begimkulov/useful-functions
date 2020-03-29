@@ -1,8 +1,14 @@
 export const curry = (fn: Function, ...args: any[]) => {
-  const argsAmount = fn.length;
-  const boundFn = fn.bind(null, ...args);
-  if (args.length >= argsAmount) {
-    return boundFn();
+  return fn.length === 0 || curryN(fn.length, fn, ...args);
+};
+
+export const curryN = (length: number, fn: Function, ...args: any[]) => {
+  const diff = length - args.length;
+  const newFn = (...otherArgs: any[]) => fn(...args, ...otherArgs);
+
+  if (diff <= 0) {
+    return newFn();
   }
-  return (...moreArgs: any[]) => curry(boundFn, ...moreArgs);
+
+  return (...otherArgs: any[]) => curryN(diff, newFn, ...otherArgs);
 };

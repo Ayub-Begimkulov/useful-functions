@@ -1,3 +1,4 @@
 export { compose } from './compose';
 export { pipe } from './pipe';
-export { curry } from './curry';
+export { curry, curryN } from './curry';
+export { curryRight, curryNRight } from './curryRight';
